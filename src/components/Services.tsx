@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Scissors, Trash, Droplets, Shower, Leaf } from "lucide-react";
+import { Scissors, Trash, Droplets, ShowerHead, Leaf } from "lucide-react";
 
 const ServiceCard = ({ 
   title, 
@@ -65,7 +65,7 @@ const Services = () => {
           <ServiceCard
             title="Deep Cleaning"
             description="Removal of ingrained dirt, winter salt, moss, and car oil from surfaces."
-            icon={Shower}
+            icon={ShowerHead}
           />
           <ServiceCard
             title="Eco-Friendly Cleaning"
