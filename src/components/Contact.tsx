@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Phone, Mail, Instagram, Calendar } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -20,10 +19,10 @@ const ContactItem = ({
       <div className="p-3 bg-brand-cream rounded-full">
         <Icon className="text-brand-dark-green" size={24} />
       </div>
-      <div>
+      <div className="max-w-full overflow-hidden">
         <h3 className="font-medium text-brand-dark-green">{title}</h3>
         {link ? (
-          <a href={link} className="text-brand-light-green hover:underline">{content}</a>
+          <a href={link} className="text-brand-light-green hover:underline break-all">{content}</a>
         ) : (
           <p>{content}</p>
         )}
