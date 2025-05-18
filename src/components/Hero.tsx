@@ -16,16 +16,18 @@ const Hero = () => {
   return (
     <section className="relative pt-24 pb-24 md:pt-32 md:pb-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark-green/90 to-brand-light-green/80"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1615729947596-a598e5de0ab3')] bg-cover bg-center mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-dark-green/95 to-brand-light-green/90"></div>
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1615729947596-a598e5de0ab3')] bg-cover bg-center bg-[position:50%_65%] mix-blend-overlay"></div>
+        {/* Semi-transparent overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30"></div>
       </div>
       
       <div className="container relative z-10">
         <div className="max-w-3xl text-white">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
             KEEP YOUR YARD GREEN, CLEAN & THRIVING
           </h1>
-          <p className="text-xl md:text-2xl mb-8 font-light">
+          <p className="text-xl md:text-2xl mb-8 font-light drop-shadow-md">
             Professional landscaping and pressure washing services — without you lifting a finger!
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
