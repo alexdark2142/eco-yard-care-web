@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,11 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Custom colors from the business card
+				"brand-dark-green": "#4d5a32",
+				"brand-light-green": "#9cb23e",
+				"brand-cream": "#f9f8e1",
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
