@@ -20,7 +20,7 @@ const Footer = () => {
               </a>
               <span className="text-brand-cream/50 hidden sm:inline">|</span>
               <a href="mailto:romanpiddubnyi620@gmail.com" className="hover:text-brand-light-green transition-colors text-sm sm:text-base break-all sm:break-normal">
-                Email Us
+                romanpiddubnyi620@gmail.com
               </a>
             </div>
             <p className="text-sm text-brand-cream/70">
