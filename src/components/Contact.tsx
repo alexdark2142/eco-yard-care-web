@@ -1,7 +1,28 @@
+
 import React, { useState } from 'react';
-import { Phone, Mail, Instagram, Calendar } from 'lucide-react';
+import { Phone, Mail, Instagram, Calendar, User, MessageSquare, Send } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 const ContactItem = ({ 
   icon: Icon, 
@@ -31,40 +52,92 @@ const ContactItem = ({
   );
 };
 
+// Form validation schema
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  phone: z.string().min(10, { message: "Please enter a valid phone number." }),
+  service: z.string().min(1, { message: "Please select a service." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+  _subject: z.string().optional(),
+  _captcha: z.literal("false").optional(),
+  _honey: z.string().optional(),
+});
+
+type FormValues = z.infer<typeof formSchema>;
+
 const Contact = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: '',
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Initialize the form
+  const form = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: "",
+      _captcha: "false",
+      _honey: "",
+    },
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+  // Map service values to readable names for the subject line
+  const serviceLabels: { [key: string]: string } = {
+    "lawn-mowing": "Lawn Mowing",
+    "bush-cutting": "Bush Cutting",
+    "edge-trimming": "Edge Trimming",
+    "garbage-removal": "Garbage Removal",
+    "gutter-cleaning": "Gutter Cleaning",
+    "pressure-washing": "Pressure Washing",
+    "other": "Other Service",
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Here you would normally send the form data to your backend
-    console.log('Form submitted:', formData);
-    
-    toast({
-      title: "Request Submitted!",
-      description: "Thank you for your interest. We'll contact you shortly.",
-    });
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: '',
-      message: '',
-    });
+  const onSubmit = async (data: FormValues) => {
+    try {
+      setIsSubmitting(true);
+      
+      // Set the subject line based on the selected service
+      data._subject = `Service Request: ${serviceLabels[data.service] || data.service}`;
+      
+      // Create FormData for submission
+      const formData = new FormData();
+      Object.entries(data).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      
+      // Submit the form to FormSubmit.co
+      const response = await fetch("https://formsubmit.co/my-email@example.com", {
+        method: "POST",
+        body: formData,
+        headers: {
+          "Accept": "application/json",
+        },
+      });
+      
+      if (response.ok) {
+        // Reset the form
+        form.reset();
+        
+        // Show success message
+        toast({
+          title: "Request Submitted!",
+          description: "Thank you for your interest. We'll contact you shortly.",
+        });
+      } else {
+        throw new Error("Form submission failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting your request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -115,85 +188,146 @@ const Contact = () => {
           </div>
           
           <div>
-            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-6 text-brand-dark-green">Book Your Service</h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <label className="block text-sm font-medium mb-1 text-gray-700">Full Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-light-green"
-                    required
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1 text-gray-700">Phone</label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-light-green"
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div className="mb-4">
-                <label className="block text-sm font-medium mb-1 text-gray-700">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-light-green"
-                  required
-                />
-              </div>
-              
-              <div className="mb-4">
-                <label className="block text-sm font-medium mb-1 text-gray-700">Service Needed</label>
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-light-green"
-                  required
-                >
-                  <option value="">Select a service</option>
-                  <option value="lawn-mowing">Lawn Mowing</option>
-                  <option value="bush-cutting">Bush Cutting</option>
-                  <option value="edge-trimming">Edge Trimming</option>
-                  <option value="garbage-removal">Garbage Removal</option>
-                  <option value="gutter-cleaning">Gutter Cleaning</option>
-                  <option value="pressure-washing">Pressure Washing</option>
-                  <option value="other">Other (please specify)</option>
-                </select>
-              </div>
-              
-              <div className="mb-6">
-                <label className="block text-sm font-medium mb-1 text-gray-700">Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-light-green"
-                  placeholder="Tell us about your needs, property size, or any special requirements..."
-                ></textarea>
-              </div>
-              
-              <Button 
-                type="submit" 
-                className="w-full bg-brand-light-green hover:bg-brand-dark-green text-white py-3"
+            <Form {...form}>
+              <form 
+                onSubmit={form.handleSubmit(onSubmit)} 
+                className="bg-white p-8 rounded-lg shadow-md"
+                action="https://formsubmit.co/my-email@example.com"
+                method="POST"
               >
-                Request Service
-              </Button>
-            </form>
+                {/* Hidden fields for FormSubmit.co */}
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_honey" />
+                <input type="hidden" name="_subject" value="New Service Request" />
+                
+                <h3 className="text-2xl font-bold mb-6 text-brand-dark-green">Book Your Service</h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <FormField
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center gap-2">
+                          <User size={16} className="text-brand-light-green" />
+                          Full Name
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} placeholder="John Doe" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="flex items-center gap-2">
+                          <Phone size={16} className="text-brand-light-green" />
+                          Phone
+                        </FormLabel>
+                        <FormControl>
+                          <Input {...field} placeholder="(123) 456-7890" />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="mb-4">
+                      <FormLabel className="flex items-center gap-2">
+                        <Mail size={16} className="text-brand-light-green" />
+                        Email
+                      </FormLabel>
+                      <FormControl>
+                        <Input {...field} placeholder="your.email@example.com" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="service"
+                  render={({ field }) => (
+                    <FormItem className="mb-4">
+                      <FormLabel className="flex items-center gap-2">
+                        <Calendar size={16} className="text-brand-light-green" />
+                        Service Needed
+                      </FormLabel>
+                      <Select 
+                        onValueChange={field.onChange} 
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a service" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="lawn-mowing">Lawn Mowing</SelectItem>
+                          <SelectItem value="bush-cutting">Bush Cutting</SelectItem>
+                          <SelectItem value="edge-trimming">Edge Trimming</SelectItem>
+                          <SelectItem value="garbage-removal">Garbage Removal</SelectItem>
+                          <SelectItem value="gutter-cleaning">Gutter Cleaning</SelectItem>
+                          <SelectItem value="pressure-washing">Pressure Washing</SelectItem>
+                          <SelectItem value="other">Other (please specify)</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem className="mb-6">
+                      <FormLabel className="flex items-center gap-2">
+                        <MessageSquare size={16} className="text-brand-light-green" />
+                        Message
+                      </FormLabel>
+                      <FormControl>
+                        <Textarea 
+                          {...field} 
+                          placeholder="Tell us about your needs, property size, or any special requirements..."
+                          rows={4}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-brand-light-green hover:bg-brand-dark-green text-white py-3"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full" />
+                      Sending...
+                    </span>
+                  ) : (
+                    <span className="flex items-center justify-center gap-2">
+                      <Send size={16} />
+                      Request Service
+                    </span>
+                  )}
+                </Button>
+              </form>
+            </Form>
           </div>
         </div>
       </div>
