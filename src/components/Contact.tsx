@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Phone, Mail, Instagram, Calendar, User, MessageSquare, Send } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -108,8 +107,8 @@ const Contact = () => {
         formData.append(key, value);
       });
       
-      // Submit the form to FormSubmit.co
-      const response = await fetch("https://formsubmit.co/my-email@example.com", {
+      // Submit the form to FormSubmit.co with updated email
+      const response = await fetch("https://formsubmit.co/stalkeralex2149@gmail.com", {
         method: "POST",
         body: formData,
         headers: {
@@ -192,7 +191,7 @@ const Contact = () => {
               <form 
                 onSubmit={form.handleSubmit(onSubmit)} 
                 className="bg-white p-8 rounded-lg shadow-md"
-                action="https://formsubmit.co/my-email@example.com"
+                action="https://formsubmit.co/stalkeralex2149@gmail.com"
                 method="POST"
               >
                 {/* Hidden fields for FormSubmit.co */}
