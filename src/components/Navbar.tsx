@@ -36,26 +36,40 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white shadow-md py-2' : 'bg-black/30 backdrop-blur-sm py-4'
+    }`}>
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
-          <h1 className="text-xl font-bold text-brand-dark-green">
+          <h1 className={`text-xl font-bold ${isScrolled ? 'text-brand-dark-green' : 'text-white'}`}>
             LANDSCAPING & <span className="whitespace-nowrap">PRESSURE WASHING</span>
           </h1>
         </div>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex space-x-6">
-          <button onClick={() => scrollToSection('services')} className="font-medium hover:text-brand-light-green transition-colors">
+          <button 
+            onClick={() => scrollToSection('services')} 
+            className={`font-medium ${isScrolled ? 'text-gray-700 hover:text-brand-light-green' : 'text-white hover:text-brand-light-green/90'} transition-colors`}
+          >
             Services
           </button>
-          <button onClick={() => scrollToSection('benefits')} className="font-medium hover:text-brand-light-green transition-colors">
+          <button 
+            onClick={() => scrollToSection('benefits')} 
+            className={`font-medium ${isScrolled ? 'text-gray-700 hover:text-brand-light-green' : 'text-white hover:text-brand-light-green/90'} transition-colors`}
+          >
             Benefits
           </button>
-          <button onClick={() => scrollToSection('pricing')} className="font-medium hover:text-brand-light-green transition-colors">
+          <button 
+            onClick={() => scrollToSection('pricing')} 
+            className={`font-medium ${isScrolled ? 'text-gray-700 hover:text-brand-light-green' : 'text-white hover:text-brand-light-green/90'} transition-colors`}
+          >
             Pricing
           </button>
-          <button onClick={() => scrollToSection('contact')} className="font-medium hover:text-brand-light-green transition-colors">
+          <button 
+            onClick={() => scrollToSection('contact')} 
+            className={`font-medium ${isScrolled ? 'text-gray-700 hover:text-brand-light-green' : 'text-white hover:text-brand-light-green/90'} transition-colors`}
+          >
             Contact
           </button>
         </div>
@@ -63,14 +77,14 @@ const Navbar = () => {
         <div className="hidden md:block">
           <Button 
             onClick={() => scrollToSection('contact')} 
-            className="bg-brand-light-green hover:bg-brand-dark-green text-white"
+            className={`${isScrolled ? 'bg-brand-light-green hover:bg-brand-dark-green' : 'bg-brand-light-green/90 hover:bg-white hover:text-brand-dark-green'} text-white`}
           >
             Book Now
           </Button>
         </div>
         
         {/* Mobile menu button */}
-        <button className="md:hidden text-brand-dark-green" onClick={toggleMenu}>
+        <button className={`md:hidden ${isScrolled ? 'text-brand-dark-green' : 'text-white'}`} onClick={toggleMenu}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
