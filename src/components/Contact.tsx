@@ -108,7 +108,7 @@ const Contact = () => {
       });
       
       // Submit the form to FormSubmit.co with updated email
-      const response = await fetch("https://formsubmit.co/stalkeralex2149@gmail.com", {
+      const response = await fetch("https://formsubmit.co/romanpiddubnyi620@gmail.com", {
         method: "POST",
         body: formData,
         headers: {
@@ -191,7 +191,7 @@ const Contact = () => {
               <form 
                 onSubmit={form.handleSubmit(onSubmit)} 
                 className="bg-white p-8 rounded-lg shadow-md"
-                action="https://formsubmit.co/stalkeralex2149@gmail.com"
+                action="https://formsubmit.co/romanpiddubnyi620@gmail.com"
                 method="POST"
               >
                 {/* Hidden fields for FormSubmit.co */}
