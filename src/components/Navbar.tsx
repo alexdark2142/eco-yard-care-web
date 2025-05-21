@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
           <h1 className={`text-xl font-bold ${isScrolled ? 'text-brand-dark-green' : 'text-white'}`}>
-            LANDSCAPING & <span className="whitespace-nowrap">PRESSURE WASHING</span>
+            ECO YARD CARE <span className="whitespace-nowrap">CALGARY</span>
           </h1>
         </div>
         
@@ -59,6 +59,18 @@ const Navbar = () => {
             className={`font-medium ${isScrolled ? 'text-gray-700 hover:text-brand-light-green' : 'text-white hover:text-brand-light-green/90'} transition-colors`}
           >
             Benefits
+          </button>
+          <button 
+            onClick={() => scrollToSection('testimonials')} 
+            className={`font-medium ${isScrolled ? 'text-gray-700 hover:text-brand-light-green' : 'text-white hover:text-brand-light-green/90'} transition-colors`}
+          >
+            Testimonials
+          </button>
+          <button 
+            onClick={() => scrollToSection('faq')} 
+            className={`font-medium ${isScrolled ? 'text-gray-700 hover:text-brand-light-green' : 'text-white hover:text-brand-light-green/90'} transition-colors`}
+          >
+            FAQ
           </button>
           <button 
             onClick={() => scrollToSection('pricing')} 
@@ -79,7 +91,7 @@ const Navbar = () => {
             onClick={() => scrollToSection('contact')} 
             className={`${isScrolled ? 'bg-brand-light-green hover:bg-brand-dark-green' : 'bg-brand-light-green/90 hover:bg-white hover:text-brand-dark-green'} text-white`}
           >
-            Book Now
+            Free Quote
           </Button>
         </div>
         
@@ -106,6 +118,18 @@ const Navbar = () => {
               Benefits
             </button>
             <button 
+              onClick={() => scrollToSection('testimonials')} 
+              className="px-6 py-2 font-medium hover:bg-gray-100"
+            >
+              Testimonials
+            </button>
+            <button 
+              onClick={() => scrollToSection('faq')} 
+              className="px-6 py-2 font-medium hover:bg-gray-100"
+            >
+              FAQ
+            </button>
+            <button 
               onClick={() => scrollToSection('pricing')} 
               className="px-6 py-2 font-medium hover:bg-gray-100"
             >
@@ -122,7 +146,7 @@ const Navbar = () => {
                 onClick={() => scrollToSection('contact')} 
                 className="w-full bg-brand-light-green hover:bg-brand-dark-green text-white"
               >
-                Book Now
+                Free Quote
               </Button>
             </div>
           </div>

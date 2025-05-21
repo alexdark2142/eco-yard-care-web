@@ -9,8 +9,8 @@ const Footer = () => {
       <div className="container px-5">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
-            <h2 className="text-2xl font-bold mb-2">LANDSCAPING & PRESSURE WASHING</h2>
-            <p className="text-brand-cream/70">Keep your yard green, clean & thriving — without lifting a finger!</p>
+            <h2 className="text-2xl font-bold mb-2">ECO YARD CARE CALGARY</h2>
+            <p className="text-brand-cream/70">Professional lawn care & pressure washing services throughout Calgary, AB</p>
           </div>
           
           <div className="flex flex-col items-center md:items-end w-full md:w-auto">
@@ -23,8 +23,12 @@ const Footer = () => {
                 romanpiddubnyi620@gmail.com
               </a>
             </div>
+            <div className="mb-4 text-center md:text-right text-sm text-brand-cream/70">
+              <p>Serving all Calgary neighborhoods and surrounding areas</p>
+              <p>Monday to Saturday, 8am - 6pm MT</p>
+            </div>
             <p className="text-sm text-brand-cream/70">
-              © {currentYear} Landscaping & Pressure Washing. All rights reserved.
+              © {currentYear} Eco Yard Care Calgary. All rights reserved.
             </p>
           </div>
         </div>
