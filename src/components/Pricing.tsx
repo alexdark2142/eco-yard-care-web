@@ -2,6 +2,7 @@
 import React from 'react';
 import { CheckCircle, Percent, CircleDollarSign } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const PriceCard = ({
   title,
@@ -16,11 +17,13 @@ const PriceCard = ({
   features: string[];
   isPopular?: boolean;
 }) => {
+  const { t } = useLanguage();
+  
   return (
     <div className={`rounded-lg overflow-hidden ${isPopular ? 'ring-2 ring-brand-light-green' : 'border border-gray-200'}`}>
       {isPopular && (
         <div className="bg-brand-light-green text-white p-2 text-center font-medium">
-          Most Popular
+          {t('pricing.mostPopular')}
         </div>
       )}
       <div className="p-8 bg-white">
@@ -41,7 +44,7 @@ const PriceCard = ({
           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           className={`w-full ${isPopular ? 'bg-brand-light-green hover:bg-brand-dark-green' : 'bg-brand-dark-green hover:bg-brand-light-green'}`}
         >
-          Book Now
+          {t('pricing.bookNow')}
         </Button>
       </div>
     </div>
@@ -49,49 +52,51 @@ const PriceCard = ({
 };
 
 const Pricing = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="pricing" className="py-20">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="section-title">Our Pricing</h2>
-          <p className="section-subtitle">Affordable rates for quality service</p>
+          <h2 className="section-title">{t('pricing.title')}</h2>
+          <p className="section-subtitle">{t('pricing.subtitle')}</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <PriceCard
-            title="Single Lawn Mowing"
-            price="$30"
-            period="per visit"
+            title={t('pricing.singleMowing.title')}
+            price={t('pricing.singleMowing.price')}
+            period={t('pricing.singleMowing.period')}
             features={[
-              "Professional grass cutting",
-              "Edge trimming",
-              "Debris cleanup",
-              "One-time service",
+              t('pricing.singleMowing.feature1'),
+              t('pricing.singleMowing.feature2'),
+              t('pricing.singleMowing.feature3'),
+              t('pricing.singleMowing.feature4'),
             ]}
           />
           
           <PriceCard
-            title="Monthly Lawn Maintenance"
-            price="$100"
-            period="/month"
+            title={t('pricing.monthlyMaintenance.title')}
+            price={t('pricing.monthlyMaintenance.price')}
+            period={t('pricing.monthlyMaintenance.period')}
             features={[
-              "Weekly grass mowing",
-              "Edge trimming",
-              "Debris removal",
-              "Consistent care all month",
+              t('pricing.monthlyMaintenance.feature1'),
+              t('pricing.monthlyMaintenance.feature2'),
+              t('pricing.monthlyMaintenance.feature3'),
+              t('pricing.monthlyMaintenance.feature4'),
             ]}
             isPopular={true}
           />
           
           <PriceCard
-            title="Pressure Washing"
-            price="$40+"
-            period=""
+            title={t('pricing.pressureWashing.title')}
+            price={t('pricing.pressureWashing.price')}
+            period={t('pricing.pressureWashing.period')}
             features={[
-              "Driveway cleaning",
-              "Patio and deck washing",
-              "Removal of tough stains",
-              "Price varies by area size",
+              t('pricing.pressureWashing.feature1'),
+              t('pricing.pressureWashing.feature2'),
+              t('pricing.pressureWashing.feature3'),
+              t('pricing.pressureWashing.feature4'),
             ]}
           />
         </div>
@@ -102,8 +107,8 @@ const Pricing = () => {
               <Percent className="text-brand-dark-green" size={24} />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-brand-dark-green">First-Time Customer Discount</h3>
-              <p className="text-gray-600">Enjoy 10% off your first service booking!</p>
+              <h3 className="text-xl font-bold text-brand-dark-green">{t('pricing.firstTimeDiscount.title')}</h3>
+              <p className="text-gray-600">{t('pricing.firstTimeDiscount.subtitle')}</p>
             </div>
           </div>
           
@@ -112,8 +117,8 @@ const Pricing = () => {
               <CircleDollarSign className="text-brand-dark-green" size={24} />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-brand-dark-green">Custom Pricing</h3>
-              <p className="text-gray-600">Contact us for custom care plans and special requirements.</p>
+              <h3 className="text-xl font-bold text-brand-dark-green">{t('pricing.customPricing.title')}</h3>
+              <p className="text-gray-600">{t('pricing.customPricing.subtitle')}</p>
             </div>
           </div>
         </div>

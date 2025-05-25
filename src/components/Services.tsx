@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Scissors, Trash, Droplets, ShowerHead, Leaf } from "lucide-react";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServiceCard = ({ 
   title, 
@@ -23,53 +24,55 @@ const ServiceCard = ({
 };
 
 const Services = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="services" className="py-20 bg-white">
       <div className="container">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="section-title">Our Calgary Lawn Care Services</h2>
-          <p className="section-subtitle">Professional yard care services for Calgary homeowners</p>
+          <h2 className="section-title">{t('services.title')}</h2>
+          <p className="section-subtitle">{t('services.subtitle')}</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <ServiceCard
-            title="Calgary Lawn Mowing"
-            description="Professional grass cutting and lawn maintenance to keep your Calgary yard looking its best year-round, even during our short growing season."
+            title={t('services.lawnMowing.title')}
+            description={t('services.lawnMowing.description')}
             icon={Scissors}
           />
           <ServiceCard
-            title="Bush & Hedge Cutting"
-            description="Precise trimming and shaping of bushes and hedges to enhance your Calgary landscape's appearance, adapted to our local climate."
+            title={t('services.bushHedge.title')}
+            description={t('services.bushHedge.description')}
             icon={Scissors}
           />
           <ServiceCard
-            title="Edge Trimming"
-            description="Clean, sharp edges along Calgary sidewalks, driveways, and garden beds for a professionally manicured look in any neighborhood."
+            title={t('services.edgeTrimming.title')}
+            description={t('services.edgeTrimming.description')}
             icon={Scissors}
           />
           <ServiceCard
-            title="Garbage Removal"
-            description="Efficient removal of any type of garbage, debris, and unwanted items from your Calgary property, following local disposal regulations."
+            title={t('services.garbageRemoval.title')}
+            description={t('services.garbageRemoval.description')}
             icon={Trash}
           />
           <ServiceCard
-            title="Gutter Cleaning"
-            description="Thorough cleaning of gutters throughout Calgary to remove leaves, dirt, and debris, preventing water damage to your home."
+            title={t('services.gutterCleaning.title')}
+            description={t('services.gutterCleaning.description')}
             icon={Trash}
           />
           <ServiceCard
-            title="Calgary Pressure Washing"
-            description="High-quality pressure washing for Calgary driveways, wooden terraces, garage doors, and more - perfect for removing winter salt residue."
+            title={t('services.pressureWashing.title')}
+            description={t('services.pressureWashing.description')}
             icon={Droplets}
           />
           <ServiceCard
-            title="Driveway Deep Cleaning"
-            description="Removal of ingrained dirt, Calgary winter salt, moss, and car oil from surfaces - restoring your driveway to like-new condition."
+            title={t('services.drivewayDeepCleaning.title')}
+            description={t('services.drivewayDeepCleaning.description')}
             icon={ShowerHead}
           />
           <ServiceCard
-            title="Eco-Friendly Services"
-            description="Calgary's choice for environmentally responsible yard care - using exclusively ecological detergents without harm to our local environment."
+            title={t('services.ecoFriendly.title')}
+            description={t('services.ecoFriendly.description')}
             icon={Leaf}
           />
         </div>
