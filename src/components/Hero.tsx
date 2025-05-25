@@ -17,15 +17,14 @@ const Hero = () => {
     <section className="relative pt-24 pb-24 md:pt-32 md:pb-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark-green/95 to-brand-light-green/90"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1615729947596-a598e5de0ab3')] bg-cover bg-center bg-[position:50%_65%] mix-blend-overlay" aria-label="Calgary lawn care service in action"></div>
-        {/* Semi-transparent overlay for better text readability */}
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1615729947596-a598e5de0ab3')] bg-cover bg-center bg-[position:50%_65%] mix-blend-overlay" aria-label="Professional lawn care service"></div>
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
       
       <div className="container relative z-10">
         <div className="max-w-3xl text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
-            CALGARY'S PREMIER ECO-FRIENDLY YARD CARE SERVICES
+            KEEP YOUR YARD GREEN, CLEAN & THRIVING
           </h1>
           <p className="text-xl md:text-2xl mb-8 font-light drop-shadow-md">
             Professional landscaping and pressure washing services in Calgary, AB — without you lifting a finger!
@@ -36,7 +35,7 @@ const Hero = () => {
               className="text-lg px-8 py-6 bg-brand-light-green hover:bg-white hover:text-brand-dark-green transition-all"
               size="lg"
             >
-              Get a Free Quote
+              Free Quote
             </Button>
             <Button 
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}

@@ -1,16 +1,18 @@
 
 import React from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
   
   return (
     <footer className="bg-brand-dark-green text-white py-12">
       <div className="container px-5">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
-            <h2 className="text-2xl font-bold mb-2">ECO YARD CARE CALGARY</h2>
-            <p className="text-brand-cream/70">Professional lawn care & pressure washing services throughout Calgary, AB</p>
+            <h2 className="text-2xl font-bold mb-2">{t('footer.title')}</h2>
+            <p className="text-brand-cream/70">{t('footer.description')}</p>
           </div>
           
           <div className="flex flex-col items-center md:items-end w-full md:w-auto">
@@ -24,11 +26,11 @@ const Footer = () => {
               </a>
             </div>
             <div className="mb-4 text-center md:text-right text-sm text-brand-cream/70">
-              <p>Serving all Calgary neighborhoods and surrounding areas</p>
-              <p>Monday to Saturday, 8am - 6pm MT</p>
+              <p>{t('footer.serving')}</p>
+              <p>{t('footer.hours')}</p>
             </div>
             <p className="text-sm text-brand-cream/70">
-              © {currentYear} Eco Yard Care Calgary. All rights reserved.
+              © {currentYear} {t('footer.copyright')}
             </p>
           </div>
         </div>
