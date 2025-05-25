@@ -28,12 +28,12 @@ const translations = {
     'nav.faq': 'FAQ',
     'nav.pricing': 'Pricing',
     'nav.contact': 'Contact',
-    'nav.freeQuote': 'Free Quote',
+    'nav.bookNow': 'Book Now',
     
     // Hero
     'hero.title': 'KEEP YOUR YARD GREEN, CLEAN & THRIVING',
     'hero.subtitle': 'Professional landscaping and pressure washing services in Calgary, AB — without you lifting a finger!',
-    'hero.freeQuote': 'Free Quote',
+    'hero.bookNow': 'Book Now',
     'hero.services': 'Our Calgary Services',
     
     // Testimonials
@@ -59,12 +59,12 @@ const translations = {
     'nav.faq': 'FAQ',
     'nav.pricing': 'Tarifs',
     'nav.contact': 'Contact',
-    'nav.freeQuote': 'Devis Gratuit',
+    'nav.bookNow': 'Réserver',
     
     // Hero
     'hero.title': 'GARDEZ VOTRE JARDIN VERT, PROPRE ET PROSPÈRE',
     'hero.subtitle': 'Services professionnels d\'aménagement paysager et de nettoyage haute pression à Calgary, AB — sans que vous leviez le petit doigt!',
-    'hero.freeQuote': 'Devis Gratuit',
+    'hero.bookNow': 'Réserver',
     'hero.services': 'Nos Services Calgary',
     
     // Testimonials
@@ -90,12 +90,12 @@ const translations = {
     'nav.faq': 'Питання',
     'nav.pricing': 'Ціни',
     'nav.contact': 'Контакти',
-    'nav.freeQuote': 'Безкоштовна Оцінка',
+    'nav.bookNow': 'Замовити',
     
     // Hero
     'hero.title': 'ТРИМАЙТЕ ВАШ ДВІР ЗЕЛЕНИМ, ЧИСТИМ ТА КВІТУЧИМ',
     'hero.subtitle': 'Професійні послуги ландшафтного дизайну та мийки під тиском в Калгарі, AB — без ваших зусиль!',
-    'hero.freeQuote': 'Безкоштовна Оцінка',
+    'hero.bookNow': 'Замовити',
     'hero.services': 'Наші Послуги в Калгарі',
     
     // Testimonials

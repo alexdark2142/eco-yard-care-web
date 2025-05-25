@@ -1,8 +1,11 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
@@ -24,10 +27,10 @@ const Hero = () => {
       <div className="container relative z-10">
         <div className="max-w-3xl text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
-            KEEP YOUR YARD GREEN, CLEAN & THRIVING
+            {t('hero.title')}
           </h1>
           <p className="text-xl md:text-2xl mb-8 font-light drop-shadow-md">
-            Professional landscaping and pressure washing services in Calgary, AB — without you lifting a finger!
+            {t('hero.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Button 
@@ -35,7 +38,7 @@ const Hero = () => {
               className="text-lg px-8 py-6 bg-brand-light-green hover:bg-white hover:text-brand-dark-green transition-all"
               size="lg"
             >
-              Free Quote
+              {t('hero.bookNow')}
             </Button>
             <Button 
               onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
@@ -43,7 +46,7 @@ const Hero = () => {
               className="text-lg px-8 py-6 border-2 border-white text-white bg-transparent hover:bg-white hover:text-brand-dark-green transition-all"
               size="lg"
             >
-              Our Calgary Services
+              {t('hero.services')}
             </Button>
           </div>
         </div>

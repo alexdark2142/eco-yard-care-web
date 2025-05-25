@@ -87,7 +87,7 @@ const Navbar = () => {
           >
             {t('nav.contact')}
           </button>
-          <LanguageSelector />
+          <LanguageSelector isScrolled={isScrolled} />
         </div>
         
         <div className="hidden md:block">
@@ -95,7 +95,7 @@ const Navbar = () => {
             onClick={() => scrollToSection('contact')} 
             className={`${isScrolled ? 'bg-brand-light-green hover:bg-brand-dark-green' : 'bg-brand-light-green/90 hover:bg-white hover:text-brand-dark-green'} text-white`}
           >
-            {t('nav.freeQuote')}
+            {t('nav.bookNow')}
           </Button>
         </div>
         
@@ -150,9 +150,9 @@ const Navbar = () => {
                 onClick={() => scrollToSection('contact')} 
                 className="bg-brand-light-green hover:bg-brand-dark-green text-white"
               >
-                {t('nav.freeQuote')}
+                {t('nav.bookNow')}
               </Button>
-              <LanguageSelector />
+              <LanguageSelector isScrolled={true} />
             </div>
           </div>
         </div>
