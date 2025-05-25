@@ -53,24 +53,24 @@ const ContactItem = ({
   );
 };
 
-// Form validation schema
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  phone: z.string().min(10, { message: "Please enter a valid phone number." }),
-  service: z.string().min(1, { message: "Please select a service." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-  _subject: z.string().optional(),
-  _captcha: z.literal("false").optional(),
-  _honey: z.string().optional(),
-});
-
-type FormValues = z.infer<typeof formSchema>;
-
 const Contact = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  // Create validation schema with translated messages
+  const formSchema = z.object({
+    name: z.string().min(2, { message: t('contact.form.validation.nameRequired') }),
+    email: z.string().email({ message: t('contact.form.validation.emailInvalid') }),
+    phone: z.string().min(10, { message: t('contact.form.validation.phoneRequired') }),
+    service: z.string().min(1, { message: t('contact.form.validation.serviceRequired') }),
+    message: z.string().min(10, { message: t('contact.form.validation.messageRequired') }),
+    _subject: z.string().optional(),
+    _captcha: z.literal("false").optional(),
+    _honey: z.string().optional(),
+  });
+
+  type FormValues = z.infer<typeof formSchema>;
   
   // Initialize the form
   const form = useForm<FormValues>({
@@ -282,7 +282,7 @@ const Contact = () => {
                           <SelectItem value="garbage-removal">{t('services.garbageRemoval.title')}</SelectItem>
                           <SelectItem value="gutter-cleaning">{t('services.gutterCleaning.title')}</SelectItem>
                           <SelectItem value="pressure-washing">{t('services.pressureWashing.title')}</SelectItem>
-                          <SelectItem value="other">Other (please specify)</SelectItem>
+                          <SelectItem value="other">{t('contact.form.other')}</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
