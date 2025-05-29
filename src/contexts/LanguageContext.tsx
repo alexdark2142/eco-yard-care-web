@@ -157,6 +157,12 @@ const translations = {
     'contact.form.successMessage': 'Thank you for your interest. We\'ll contact you shortly.',
     'contact.form.error': 'Submission Failed',
     'contact.form.errorMessage': 'There was an error submitting your request. Please try again.',
+    'contact.form.other': 'Other',
+    'contact.form.validation.nameRequired': 'Name must be at least 2 characters.',
+    'contact.form.validation.emailInvalid': 'Please enter a valid email address.',
+    'contact.form.validation.phoneRequired': 'Please enter a valid phone number.',
+    'contact.form.validation.serviceRequired': 'Please select a service.',
+    'contact.form.validation.messageRequired': 'Message must be at least 10 characters.',
     
     // Footer
     'footer.title': 'ECO YARD CARE CALGARY',
@@ -178,13 +184,11 @@ const translations = {
     'nav.contact': 'Contact',
     'nav.bookNow': 'Réserver',
     
-    // Hero
     'hero.title': 'GARDEZ VOTRE JARDIN VERT, PROPRE ET PROSPÈRE',
     'hero.subtitle': 'Services professionnels d\'aménagement paysager et de nettoyage haute pression à Calgary, AB — sans que vous leviez le petit doigt!',
     'hero.bookNow': 'Réserver',
     'hero.services': 'Nos Services Calgary',
     
-    // Services
     'services.title': 'Nos Services d\'Entretien de Pelouse à Calgary',
     'services.subtitle': 'Services professionnels d\'entretien de jardin pour les propriétaires de Calgary',
     'services.lawnMowing.title': 'Tonte de Pelouse Calgary',
@@ -204,7 +208,6 @@ const translations = {
     'services.ecoFriendly.title': 'Services Écologiques',
     'services.ecoFriendly.description': 'Le choix de Calgary pour l\'entretien de jardin écologiquement responsable - utilisant exclusivement des détergents écologiques sans nuire à notre environnement local.',
     
-    // Benefits
     'benefits.title': 'Pourquoi Nous Choisir',
     'benefits.subtitle': 'Les avantages de notre service professionnel',
     'benefits.ecoFriendly.title': 'Écologique',
@@ -226,7 +229,6 @@ const translations = {
     'benefits.cta.subtitle': 'Obtenez 10% de réduction sur votre premier service en réservant maintenant',
     'benefits.cta.button': 'Réserver Votre Service',
     
-    // Pricing
     'pricing.title': 'Nos Tarifs',
     'pricing.subtitle': 'Tarifs abordables pour un service de qualité',
     'pricing.singleMowing.title': 'Tonte de Pelouse Unique',
@@ -257,7 +259,6 @@ const translations = {
     'pricing.customPricing.subtitle': 'Contactez-nous pour des plans de soins personnalisés et des exigences spéciales.',
     'pricing.bookNow': 'Réserver',
     
-    // FAQ
     'faq.title': 'Questions Fréquemment Posées',
     'faq.subtitle': 'Questions communes sur nos services d\'entretien de pelouse Calgary',
     'faq.areas.title': 'Quelles zones de Calgary desservez-vous?',
@@ -273,11 +274,9 @@ const translations = {
     'faq.different.title': 'Qu\'est-ce qui rend vos services d\'entretien de pelouse différents des autres compagnies Calgary?',
     'faq.different.content': 'Nous nous distinguons en offrant des services vraiment écologiques, une attention exceptionnelle aux détails, et une compréhension profonde des défis climatiques uniques de Calgary. Notre équipe a une vaste expérience avec les types d\'herbe locaux, les conditions de sol, et les modèles météorologiques, nous permettant de fournir des soins personnalisés qui produisent de meilleurs résultats pour les propriétés Calgary.',
     
-    // Testimonials
     'testimonials.title': 'Ce que disent les propriétaires de Calgary',
     'testimonials.subtitle': 'Fait confiance par les propriétaires de Calgary, AB',
     
-    // Contact
     'contact.title': 'Contactez-Nous',
     'contact.subtitle': 'Réservez votre service ou demandez un devis aujourd\'hui',
     'contact.getInTouch': 'Contactez-Nous',
@@ -305,15 +304,19 @@ const translations = {
     'contact.form.successMessage': 'Merci pour votre intérêt. Nous vous contacterons bientôt.',
     'contact.form.error': 'Échec de la Soumission',
     'contact.form.errorMessage': 'Il y a eu une erreur lors de la soumission de votre demande. Veuillez réessayer.',
+    'contact.form.other': 'Autre',
+    'contact.form.validation.nameRequired': 'Le nom doit contenir au moins 2 caractères.',
+    'contact.form.validation.emailInvalid': 'Veuillez entrer une adresse email valide.',
+    'contact.form.validation.phoneRequired': 'Veuillez entrer un numéro de téléphone valide.',
+    'contact.form.validation.serviceRequired': 'Veuillez sélectionner un service.',
+    'contact.form.validation.messageRequired': 'Le message doit contenir au moins 10 caractères.',
     
-    // Footer
     'footer.title': 'ECO YARD CARE CALGARY',
     'footer.description': 'Services professionnels d\'entretien de pelouse et de nettoyage haute pression dans tout Calgary, AB',
     'footer.serving': 'Desservant tous les quartiers de Calgary et les environs',
     'footer.hours': 'Lundi au samedi, 8h - 18h MT',
     'footer.copyright': 'Eco Yard Care Calgary. Tous droits réservés.',
     
-    // Back to top
     'backToTop': 'Retour en Haut',
   },
   uk: {
@@ -326,13 +329,11 @@ const translations = {
     'nav.contact': 'Контакти',
     'nav.bookNow': 'Замовити',
     
-    // Hero
     'hero.title': 'ТРИМАЙТЕ ВАШ ДВІР ЗЕЛЕНИМ, ЧИСТИМ ТА КВІТУЧИМ',
     'hero.subtitle': 'Професійні послуги ландшафтного дизайну та мийки під тиском в Калгарі, AB — без ваших зусиль!',
     'hero.bookNow': 'Замовити',
     'hero.services': 'Наші Послуги в Калгарі',
     
-    // Services
     'services.title': 'Наші Послуги Догляду за Газоном в Калгарі',
     'services.subtitle': 'Професійні послуги догляду за двором для власників будинків Калгарі',
     'services.lawnMowing.title': 'Косіння Газону Калгарі',
@@ -352,7 +353,6 @@ const translations = {
     'services.ecoFriendly.title': 'Екологічні Послуги',
     'services.ecoFriendly.description': 'Вибір Калгарі для екологічно відповідального догляду за двором - використовуючи виключно екологічні миючі засоби без шкоди для нашого місцевого середовища.',
     
-    // Benefits
     'benefits.title': 'Чому Обрати Нас',
     'benefits.subtitle': 'Переваги нашого професійного сервісу',
     'benefits.ecoFriendly.title': 'Екологічно',
@@ -374,7 +374,6 @@ const translations = {
     'benefits.cta.subtitle': 'Отримайте 10% знижки на ваш перший сервіс при замовленні зараз',
     'benefits.cta.button': 'Замовити Ваш Сервіс',
     
-    // Pricing
     'pricing.title': 'Наші Ціни',
     'pricing.subtitle': 'Доступні тарифи за якісний сервіс',
     'pricing.singleMowing.title': 'Одноразове Косіння Газону',
@@ -405,7 +404,6 @@ const translations = {
     'pricing.customPricing.subtitle': 'Зв\'яжіться з нами для індивідуальних планів догляду та спеціальних вимог.',
     'pricing.bookNow': 'Замовити',
     
-    // FAQ
     'faq.title': 'Часто Задавані Питання',
     'faq.subtitle': 'Поширені питання про наші послуги догляду за газоном в Калгарі',
     'faq.areas.title': 'Які райони Калгарі ви обслуговуєте?',
@@ -421,11 +419,9 @@ const translations = {
     'faq.different.title': 'Що робить ваші послуги догляду за газоном відмінними від інших компаній Калгарі?',
     'faq.different.content': 'Ми виділяємося, пропонуючи справді екологічні послуги, виняткову увагу до деталей та глибоке розуміння унікальних кліматичних викликів Калгарі. Наша команда має великий досвід роботи з місцевими типами трави, ґрунтовими умовами та погодними моделями, що дозволяє нам надавати індивідуальний догляд, який дає кращі результати для власностей Калгарі.',
     
-    // Testimonials
     'testimonials.title': 'Що кажуть власники будинків Калгарі',
     'testimonials.subtitle': 'Довіряють власники будинків по всьому Калгарі, AB',
     
-    // Contact
     'contact.title': 'Зв\'яжіться з Нами',
     'contact.subtitle': 'Замовте ваш сервіс або запросіть оцінку сьогодні',
     'contact.getInTouch': 'Зв\'яжіться з Нами',
@@ -453,15 +449,19 @@ const translations = {
     'contact.form.successMessage': 'Дякуємо за ваш інтерес. Ми зв\'яжемося з вами найближчим часом.',
     'contact.form.error': 'Помилка Відправки',
     'contact.form.errorMessage': 'Сталася помилка при відправці вашого запиту. Будь ласка, спробуйте ще раз.',
+    'contact.form.other': 'Інше',
+    'contact.form.validation.nameRequired': 'Ім\'я повинно містити принаймні 2 символи.',
+    'contact.form.validation.emailInvalid': 'Будь ласка, введіть дійсну адресу електронної пошти.',
+    'contact.form.validation.phoneRequired': 'Будь ласка, введіть дійсний номер телефону.',
+    'contact.form.validation.serviceRequired': 'Будь ласка, оберіть послугу.',
+    'contact.form.validation.messageRequired': 'Повідомлення повинно містити принаймні 10 символів.',
     
-    // Footer
     'footer.title': 'ECO YARD CARE CALGARY',
     'footer.description': 'Професійні послуги догляду за газоном та мийки під тиском по всьому Калгарі, AB',
     'footer.serving': 'Обслуговуємо всі райони Калгарі та околиці',
     'footer.hours': 'Понеділок - субота, 8:00 - 18:00 MT',
     'footer.copyright': 'Eco Yard Care Calgary. Всі права захищені.',
     
-    // Back to top
     'backToTop': 'Повернутися Наверх',
   },
 };
@@ -482,7 +482,12 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const t = (key: string): string => {
-    return translations[language][key] || key;
+    const translation = translations[language][key];
+    if (!translation) {
+      console.warn(`Translation missing for key: ${key} in language: ${language}`);
+      return key;
+    }
+    return translation;
   };
 
   return (
