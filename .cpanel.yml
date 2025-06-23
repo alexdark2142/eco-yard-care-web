@@ -5,4 +5,4 @@ deployment:
     - export PATH=$PATH:$HOME/.nvm/versions/node/v18.18.2/bin/
     - npm install
     - npm run build
-    - /bin/cp -R dist/* /home/abcaqnid/public_html/ 
+    - /bin/cp -R dist/. /home/abcaqnid/public_html/ 
