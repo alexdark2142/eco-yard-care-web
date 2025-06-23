@@ -3,7 +3,6 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/abcaqnid/public_html/
     - cd /home/abcaqnid/repositories/eco-yard-care-web
-    - source /home/abcaqnid/nodevenv/repositories/eco-yard-care-web/20/bin/activate
-    - npm install
-    - npm run build
+    - /home/abcaqnid/nodevenv/repositories/eco-yard-care-web/20/bin/npm install
+    - /home/abcaqnid/nodevenv/repositories/eco-yard-care-web/20/bin/npm run build
     - /bin/cp -R dist/. $DEPLOYPATH 
