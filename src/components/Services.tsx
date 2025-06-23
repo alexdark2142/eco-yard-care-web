@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Scissors, Trash, Droplets, ShowerHead, Leaf } from "lucide-react";
+import { Scissors, Trash, Droplets, ShowerHead, Leaf, Snowflake } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServiceCard = ({ 
@@ -64,6 +63,11 @@ const Services = () => {
             title={t('services.pressureWashing.title')}
             description={t('services.pressureWashing.description')}
             icon={Droplets}
+          />
+          <ServiceCard
+            title={t('services.snowRemoval.title')}
+            description={t('services.snowRemoval.description')}
+            icon={Snowflake}
           />
           <ServiceCard
             title={t('services.drivewayDeepCleaning.title')}

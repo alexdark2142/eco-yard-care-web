@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -31,6 +30,9 @@ const Footer = () => {
             </div>
             <p className="text-sm text-brand-cream/70">
               © {currentYear} {t('footer.copyright')}
+            </p>
+            <p className="text-xs text-brand-cream/50 mt-1">
+              Designed & Developed by Oleksandr Piddubnyi
             </p>
           </div>
         </div>

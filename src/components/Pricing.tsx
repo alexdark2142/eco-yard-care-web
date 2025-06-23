@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { CheckCircle, Percent, CircleDollarSign } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,7 @@ const PriceCard = ({
 }: {
   title: string;
   price: string;
-  period: string;
+  period?: string;
   features: string[];
   isPopular?: boolean;
 }) => {
@@ -91,7 +90,6 @@ const Pricing = () => {
           <PriceCard
             title={t('pricing.pressureWashing.title')}
             price={t('pricing.pressureWashing.price')}
-            period={t('pricing.pressureWashing.period')}
             features={[
               t('pricing.pressureWashing.feature1'),
               t('pricing.pressureWashing.feature2'),

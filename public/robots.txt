@@ -1,7 +1,9 @@
-
-# Allow all bots to index the site
+# Allow all search engines to crawl the site
 User-agent: *
 Allow: /
 
+# Optionally disallow thank-you page (uncomment if you don't want it indexed)
+# Disallow: /thank-you
+
 # Sitemap location
-Sitemap: https://ecoyardcarecalgary.com/sitemap.xml
+Sitemap: https://ab-calgary-landscaping.com/sitemap.xml

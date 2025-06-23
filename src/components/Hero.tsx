@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -20,7 +19,11 @@ const Hero = () => {
     <section className="relative pt-24 pb-24 md:pt-32 md:pb-32 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-brand-dark-green/95 to-brand-light-green/90"></div>
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1615729947596-a598e5de0ab3')] bg-cover bg-center bg-[position:50%_65%] mix-blend-overlay" aria-label="Professional lawn care service"></div>
+        <div 
+          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1615729947596-a598e5de0ab3')] bg-cover bg-center bg-[position:50%_65%] mix-blend-overlay" 
+          aria-label="Professional landscaping and lawn care service background image"
+          role="img"
+        ></div>
         <div className="absolute inset-0 bg-black/30"></div>
       </div>
       

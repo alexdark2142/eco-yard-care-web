@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Phone, Mail, Instagram, Calendar, User, MessageSquare, Send } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -24,6 +23,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useNavigate } from 'react-router-dom';
 
 const ContactItem = ({ 
   icon: Icon, 
@@ -56,6 +56,7 @@ const ContactItem = ({
 const Contact = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Create validation schema with translated messages
@@ -94,6 +95,7 @@ const Contact = () => {
     "garbage-removal": "Garbage Removal",
     "gutter-cleaning": "Gutter Cleaning",
     "pressure-washing": "Pressure Washing",
+    "snow-removal": "Snow Removal",
     "other": "Other Service",
   };
 
@@ -107,7 +109,7 @@ const Contact = () => {
       // Create FormData for submission
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
-        formData.append(key, value);
+        formData.append(key, String(value));
       });
       
       // Submit the form to FormSubmit.co with updated email
@@ -123,11 +125,8 @@ const Contact = () => {
         // Reset the form
         form.reset();
         
-        // Show success message
-        toast({
-          title: t('contact.form.success'),
-          description: t('contact.form.successMessage'),
-        });
+        // Navigate to thank you page
+        navigate('/thank-you');
       } else {
         throw new Error("Form submission failed");
       }
@@ -282,6 +281,7 @@ const Contact = () => {
                           <SelectItem value="garbage-removal">{t('services.garbageRemoval.title')}</SelectItem>
                           <SelectItem value="gutter-cleaning">{t('services.gutterCleaning.title')}</SelectItem>
                           <SelectItem value="pressure-washing">{t('services.pressureWashing.title')}</SelectItem>
+                          <SelectItem value="snow-removal">{t('services.snowRemoval.title')}</SelectItem>
                           <SelectItem value="other">{t('contact.form.other')}</SelectItem>
                         </SelectContent>
                       </Select>
