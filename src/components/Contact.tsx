@@ -65,7 +65,6 @@ const Contact = () => {
     email: z.string().email({ message: t('contact.form.validation.emailInvalid') }),
     phone: z.string().min(10, { message: t('contact.form.validation.phoneRequired') }),
     service: z.string().min(1, { message: t('contact.form.validation.serviceRequired') }),
-    message: z.string().min(10, { message: t('contact.form.validation.messageRequired') }),
     _subject: z.string().optional(),
     _captcha: z.literal("false").optional(),
     _honey: z.string().optional(),
@@ -81,7 +80,6 @@ const Contact = () => {
       email: "",
       phone: "",
       service: "",
-      message: "",
       _captcha: "false",
       _honey: "",
     },
@@ -285,27 +283,6 @@ const Contact = () => {
                           <SelectItem value="other">{t('contact.form.other')}</SelectItem>
                         </SelectContent>
                       </Select>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem className="mb-6">
-                      <FormLabel className="flex items-center gap-2">
-                        <MessageSquare size={16} className="text-brand-light-green" />
-                        {t('contact.form.message')}
-                      </FormLabel>
-                      <FormControl>
-                        <Textarea 
-                          {...field} 
-                          placeholder={t('contact.form.messagePlaceholder')}
-                          rows={4}
-                        />
-                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}

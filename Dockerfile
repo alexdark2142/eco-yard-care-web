@@ -1,20 +1,20 @@
-# Use Node.js 18 Alpine for smaller image size
-FROM node:18-alpine
+# Базовий образ для Node.js
+FROM node:20
 
-# Set working directory
+# Робоча директорія
 WORKDIR /app
 
-# Copy package files first for better caching
+# Копіюємо package.json та package-lock.json
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Встановлюємо залежності
+RUN npm install
 
-# Copy the rest of the application
+# Копіюємо всі файли проекту
 COPY . .
 
-# Expose port 8080
-EXPOSE 8080
+# Відкриваємо порт для Node.js сервера
+EXPOSE 3001
 
-# Start the development server with host binding for external access
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"] 
+# Запускаємо сервер
+CMD ["node", "server.cjs"] 
