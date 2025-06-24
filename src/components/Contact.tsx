@@ -97,43 +97,24 @@ const Contact = () => {
     "other": "Other Service",
   };
 
-  const onSubmit = async (data: FormValues) => {
+  // Додаємо обробник відправки форми
+  const handleSubmit = async (values: FormValues) => {
+    setIsSubmitting(true);
     try {
-      setIsSubmitting(true);
-      
-      // Set the subject line based on the selected service
-      data._subject = `Service Request: ${serviceLabels[data.service] || data.service}`;
-      
-      // Create FormData for submission
-      const formData = new FormData();
-      Object.entries(data).forEach(([key, value]) => {
-        formData.append(key, String(value));
+      const response = await fetch('http://localhost:3001/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
       });
-      
-      // Submit the form to FormSubmit.co with updated email
-      const response = await fetch("https://formsubmit.co/romanpiddubnyi620@gmail.com", {
-        method: "POST",
-        body: formData,
-        headers: {
-          "Accept": "application/json",
-        },
-      });
-      
       if (response.ok) {
-        // Reset the form
+        toast({ title: t('contact.form.successTitle'), description: t('contact.form.successText'), variant: 'success' });
         form.reset();
-        
-        // Navigate to thank you page
         navigate('/thank-you');
       } else {
-        throw new Error("Form submission failed");
+        toast({ title: t('contact.form.errorTitle'), description: t('contact.form.errorText'), variant: 'destructive' });
       }
     } catch (error) {
-      toast({
-        title: t('contact.form.error'),
-        description: t('contact.form.errorMessage'),
-        variant: "destructive",
-      });
+      toast({ title: t('contact.form.errorTitle'), description: t('contact.form.errorText'), variant: 'destructive' });
     } finally {
       setIsSubmitting(false);
     }
@@ -189,17 +170,10 @@ const Contact = () => {
           <div>
             <Form {...form}>
               <form 
-                onSubmit={form.handleSubmit(onSubmit)} 
                 className="bg-white p-8 rounded-lg shadow-md"
-                action="https://formsubmit.co/romanpiddubnyi620@gmail.com"
-                method="POST"
+                onSubmit={form.handleSubmit(handleSubmit)}
+                autoComplete="off"
               >
-                {/* Hidden fields for FormSubmit.co */}
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_honey" />
-                <input type="hidden" name="_subject" value="New Service Request" />
-                <input type="hidden" name="_template" value="table" />
-                
                 <h3 className="text-2xl font-bold mb-6 text-brand-dark-green">{t('contact.bookService')}</h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
