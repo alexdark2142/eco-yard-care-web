@@ -198,6 +198,7 @@ const Contact = () => {
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="hidden" name="_honey" />
                 <input type="hidden" name="_subject" value="New Service Request" />
+                <input type="hidden" name="_template" value="table" />
                 
                 <h3 className="text-2xl font-bold mb-6 text-brand-dark-green">{t('contact.bookService')}</h3>
                 
