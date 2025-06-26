@@ -93,8 +93,7 @@ const Contact = () => {
     "garbage-removal": "Garbage Removal",
     "gutter-cleaning": "Gutter Cleaning",
     "pressure-washing": "Pressure Washing",
-    "snow-removal": "Snow Removal",
-    "other": "Other Service",
+    "snow-removal": "Snow Removal"
   };
 
   // Додаємо обробник відправки форми
@@ -255,7 +254,6 @@ const Contact = () => {
                           <SelectItem value="gutter-cleaning">{t('services.gutterCleaning.title')}</SelectItem>
                           <SelectItem value="pressure-washing">{t('services.pressureWashing.title')}</SelectItem>
                           <SelectItem value="snow-removal">{t('services.snowRemoval.title')}</SelectItem>
-                          <SelectItem value="other">{t('contact.form.other')}</SelectItem>
                         </SelectContent>
                       </Select>
                       <FormMessage />
