@@ -100,13 +100,13 @@ const Contact = () => {
   const handleSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('http://localhost:3001/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
       });
       if (response.ok) {
-        toast({ title: t('contact.form.successTitle'), description: t('contact.form.successText'), variant: 'success' });
+        toast({ title: t('contact.form.successTitle'), description: t('contact.form.successText') });
         form.reset();
         navigate('/thank-you');
       } else {

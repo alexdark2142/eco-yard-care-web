@@ -5,4 +5,11 @@ deployment:
     - cd /home/abcaqnid/repositories/eco-yard-care-web
     - /home/abcaqnid/nodevenv/repositories/eco-yard-care-web/20/bin/npm install
     - /home/abcaqnid/nodevenv/repositories/eco-yard-care-web/20/bin/npm run build
-    - /bin/cp -R dist/. $DEPLOYPATH 
+    - /home/abcaqnid/nodevenv/repositories/eco-yard-care-web/20/bin/npm run build:server
+    - /bin/cp -R dist/. $DEPLOYPATH
+    - /bin/cp -R dist/server/. /home/abcaqnid/public_html/api/
+    - /bin/cp package.json /home/abcaqnid/public_html/api/
+    - /bin/cp server.js $DEPLOYPATH
+    - /bin/cp ecosystem.config.js $DEPLOYPATH
+    - /bin/cp start-server.sh $DEPLOYPATH
+    - chmod +x $DEPLOYPATH/start-server.sh 
