@@ -11,7 +11,7 @@ app.use(express.json());
 
 // API routes
 app.post('/api/contact', async (req, res) => {
-  const { name, email, phone, service } = req.body;
+  const { name, email, phone, service, language } = req.body;
 
   if (!name || !email || !phone || !service) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -28,18 +28,22 @@ app.post('/api/contact', async (req, res) => {
     }
   });
 
+  // Визначаємо мову для логування
+  const languageInfo = language ? ` (Language: ${language.toUpperCase()})` : '';
+
   const mailOptions = {
     from: 'Landscaping Service <roman@ab-calgary-landscaping.com>',
     to: 'romanpiddubnyi620@gmail.com',
     replyTo: email,
-    subject: `New Service Request from Website: ${service}`,
-    text: `You have received a new service request from the website.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}`,
+    subject: `New Service Request from Website: ${service}${languageInfo}`,
+    text: `You have received a new service request from the website.\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}${languageInfo}`,
     html: `
       <h2>New Service Request from Website</h2>
       <p><strong>Name:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Phone:</strong> ${phone}</p>
       <p><strong>Service:</strong> ${service}</p>
+      ${language ? `<p><strong>Language:</strong> ${language.toUpperCase()}</p>` : ''}
     `,
   };
 

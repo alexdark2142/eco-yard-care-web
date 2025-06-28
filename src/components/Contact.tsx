@@ -54,7 +54,7 @@ const ContactItem = ({
 };
 
 const Contact = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -85,25 +85,33 @@ const Contact = () => {
     },
   });
 
-  // Map service values to readable names for the subject line
-  const serviceLabels: { [key: string]: string } = {
-    "lawn-mowing": "Lawn Mowing",
-    "bush-cutting": "Bush Cutting",
-    "edge-trimming": "Edge Trimming",
-    "garbage-removal": "Garbage Removal",
-    "gutter-cleaning": "Gutter Cleaning",
-    "pressure-washing": "Pressure Washing",
-    "snow-removal": "Snow Removal"
+  // Map service keys to translation keys
+  const serviceTranslationKeys: { [key: string]: string } = {
+    "lawn-mowing": "services.lawnMowing.title",
+    "bush-cutting": "services.bushHedge.title",
+    "edge-trimming": "services.edgeTrimming.title",
+    "garbage-removal": "services.garbageRemoval.title",
+    "gutter-cleaning": "services.gutterCleaning.title",
+    "pressure-washing": "services.pressureWashing.title",
+    "snow-removal": "services.snowRemoval.title"
   };
 
   // Додаємо обробник відправки форми
   const handleSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
     try {
+      // Отримуємо переклад сервісу замість ключа
+      const serviceTranslationKey = serviceTranslationKeys[values.service];
+      const translatedService = serviceTranslationKey ? t(serviceTranslationKey) : values.service;
+      
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          ...values,
+          service: translatedService, // Відправляємо переклад замість ключа
+          language: language // Додаємо поточну мову
+        }),
       });
       if (response.ok) {
         toast({ title: t('contact.form.successTitle'), description: t('contact.form.successText') });

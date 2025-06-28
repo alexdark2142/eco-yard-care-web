@@ -25,4 +25,5 @@ services:
     ports:
       - "3001:3001"
     environment:
-      - NODE_ENV=production 
+      - NODE_ENV=production
+      - PORT=3001 
