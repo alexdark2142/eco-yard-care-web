@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Phone, Mail, Instagram, Calendar, User, MessageSquare, Send } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -58,6 +58,16 @@ const Contact = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
+  
+  // Очищення при розмонтуванні компонента
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
   
   // Create validation schema with translated messages
   const formSchema = z.object({
@@ -99,6 +109,11 @@ const Contact = () => {
   // Додаємо обробник відправки форми
   const handleSubmit = async (values: FormValues) => {
     setIsSubmitting(true);
+    
+    // Створюємо AbortController для можливості скасування запиту
+    const abortController = new AbortController();
+    abortControllerRef.current = abortController;
+    
     try {
       // Отримуємо переклад сервісу замість ключа
       const serviceTranslationKey = serviceTranslationKeys[values.service];
@@ -112,7 +127,9 @@ const Contact = () => {
           service: translatedService, // Відправляємо переклад замість ключа
           language: language // Додаємо поточну мову
         }),
+        signal: abortController.signal, // Додаємо сигнал для скасування
       });
+      
       if (response.ok) {
         toast({ title: t('contact.form.successTitle'), description: t('contact.form.successText') });
         form.reset();
@@ -121,9 +138,15 @@ const Contact = () => {
         toast({ title: t('contact.form.errorTitle'), description: t('contact.form.errorText'), variant: 'destructive' });
       }
     } catch (error) {
+      // Перевіряємо чи це помилка скасування
+      if (error.name === 'AbortError') {
+        console.log('Request was aborted');
+        return; // Не показуємо помилку якщо запит був скасований
+      }
       toast({ title: t('contact.form.errorTitle'), description: t('contact.form.errorText'), variant: 'destructive' });
     } finally {
       setIsSubmitting(false);
+      abortControllerRef.current = null;
     }
   };
 
